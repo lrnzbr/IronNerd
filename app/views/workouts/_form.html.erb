@@ -1,0 +1,51 @@
+<%= form_for(@workout) do |f| %>
+  <% if @workout.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@workout.errors.count, "error") %> prohibited this workout from being saved:</h2>
+
+      <ul>
+      <% @workout.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :subtitle %><br>
+    <%= f.text_field :subtitle %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Muscle Groups" %><br />
+    <% MuscleGroup.all.each do |muscle_group| %>
+      <%= check_box_tag 'workout[muscle_group_ids][]', muscle_group.id,
+@workout.muscle_group_ids.include?(muscle_group.id), id: dom_id(muscle_group) %>
+      <%= label_tag dom_id(muscle_group), muscle_group.name, class: "check_box_label" %>
+    <% end %>
+</div>
+
+
+  <div class="field">
+    <%= f.label :equipment %><br>
+    <%= f.text_area :equipment %>
+  </div>
+  <div class="field">
+    <%= f.label :instructions %><br>
+    <%= f.text_area :instructions %>
+  </div>
+  <div class="field">
+    <%= f.label :repetitions %><br>
+    <%= f.number_field :repetitions %>
+  </div>
+  <div class="field">
+    <%= f.label :sets %><br>
+    <%= f.number_field :sets %>
+  </div>
+  <div class="actions">
+ <%= submit_or_cancel(f) %>  </div>
+<% end %>

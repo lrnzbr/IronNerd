@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  subtitle: MyString
+  equipment: MyText
+  instructions: MyText
+  repetitions: 1
+  sets: 1
+
+two:
+  title: MyString
+  subtitle: MyString
+  equipment: MyText
+  instructions: MyText
+  repetitions: 1
+  sets: 1

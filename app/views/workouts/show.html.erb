@@ -1,0 +1,6 @@
+<%= render @workout %>
+<h3>Comments</h3>
+<div id="comments">
+  <%= render @workout.comments %>
+</div>
+<%= link_to t('comments.new_comment'), new_workout_comment_path(@workout, :format => :js), :remote => true, :id => 'new_comment_link' %>
